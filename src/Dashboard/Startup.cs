@@ -6,10 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Dashboard.Logic.DbModel;
 using Microsoft.EntityFrameworkCore;
 using Dashboard.Logic.Repository;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Dashboard.Converters;
 
 namespace Dashboard
 {
@@ -48,6 +48,7 @@ namespace Dashboard
              });
 
             services.AddScoped<LogInfoRepository>();
+            services.AddSingleton<LogInfoConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
