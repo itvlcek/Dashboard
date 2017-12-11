@@ -5,7 +5,7 @@ import { Response } from '@angular/http';
 
 @Injectable()
 export class CommonService {
-    private baseUrl = 'http://localhost:58834/api';
+    private baseUrl = 'http://localhost:65126/api';
 
     constructor() { }
 

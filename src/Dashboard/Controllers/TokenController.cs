@@ -12,6 +12,8 @@ using Dashboard.Logic.DbModel;
 
 namespace Dashboard.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/token")]
     public class TokenController : Controller
     {
         private IConfiguration Configuration { get; set; }

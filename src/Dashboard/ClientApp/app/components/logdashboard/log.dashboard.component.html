@@ -1,0 +1,41 @@
+﻿<div class="panel panel-success">
+    <div class="panel-heading">
+        
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table"
+                   *ngIf="logs && logs.length">
+                <thead>
+                    <tr>
+                        <th>Application</th>
+                        <th>Logger name</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let log of logs ">
+                        <td>
+                            {{log.Application}}
+                        </td>
+                        <td>
+                            {{log.LoggerName}}
+                        </td>
+                        <td>{{ log.Message }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

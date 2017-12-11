@@ -6,10 +6,10 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
 import { CommonService } from '../services/common.service';
-import { contentHeaders } from '../common/headers';
 import { UserProfile } from './user.profile';
 import { IProfile } from './user.model';
 
+@Injectable()
 export class UserService {
     redirectUrl: string;
     errorMessage: string;
@@ -41,14 +41,14 @@ export class UserService {
             return;
         }
         let options = new RequestOptions(
-            { headers: contentHeaders });
+            { headers: new Headers() });
 
         var credentials = {
             grant_type: 'password',
             email: userName,
             password: password
         };
-        let url = this.commonService.getBaseUrl() + '/auth/token';
+        let url = this.commonService.getBaseUrl() + '/token';
 
         return this.http.post(url, credentials, options)
             .map((response: Response) => {
@@ -62,7 +62,7 @@ export class UserService {
             return;
         }
         let options = new RequestOptions(
-            { headers: contentHeaders });
+            { headers: new Headers() });
 
         var credentials = {
             email: userName,

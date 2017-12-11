@@ -2,16 +2,12 @@
 import { Router } from '@angular/router';
 import { Headers } from '@angular/http';
 
-import { IProfile } from 'user.model'
+import { IProfile } from './user.model'
 
 @Injectable()
 export class UserProfile {
-    userProfile: IProfile = {
-        token: "",
-        expiration: "",
-        currentUser: { id: '', userName: '', email: '' },
-        claims: null
-    };
+    userProfile: IProfile 
+
     constructor(private router: Router) {
     }
 
@@ -31,12 +27,12 @@ export class UserProfile {
 
         if (accessToken) {
             this.userProfile.token = accessToken;
-            this.userProfile.expiration = sessionStorage.getItem('expires_in');
+            this.userProfile.expiration = sessionStorage.getItem('expires_in') || '';
             if (this.userProfile.currentUser == null) {
                 this.userProfile.currentUser = { id: '', userName: '', email: '' }
             }
-            this.userProfile.currentUser.id = sessionStorage.getItem('nameid');
-            this.userProfile.currentUser.userName = sessionStorage.getItem('userName');
+            this.userProfile.currentUser.id = sessionStorage.getItem('nameid') || '';
+            this.userProfile.currentUser.userName = sessionStorage.getItem('userName') || '';
         }
 
         return this.userProfile;
@@ -48,8 +44,8 @@ export class UserProfile {
         this.userProfile = {
             token: "",
             expiration: "",
-            currentUser: null,
-            claims: null
+            currentUser: { id: "", userName: "", email: "" },
+            claims: [],            
         };
         return this.userProfile;
     }

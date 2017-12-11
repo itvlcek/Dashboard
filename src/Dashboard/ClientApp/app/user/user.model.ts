@@ -5,12 +5,12 @@
     currentUser: IUser;
 }
  
-interface IClaim {
+export interface IClaim {
     type: string;
     value: string;
 }
  
-interface IUser {
+export interface IUser {
     id: string;
     userName: string;
     email: string;
